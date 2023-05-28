@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link rel="stylesheet" href="./styles/grid.css" />
+    <link rel="stylesheet" href="./styles/header.css" />
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="content" id="main">
+      <div class="" id="top"></div>
+      <div class="header d-flex flex-row row" id="header">
+        <div class="header-icon col-3" onclick="toggleTheme()">&#128406;</div>
+        <ul
+          class="header-list flex-row justify-content-end col-9"
+          id="menuList"
+        ></ul>
+      </div>
+      <div class="container main-data" id="categories"></div>
+
+      <a href="#top" class="top-button d-flex justify-content-center"
+        >&#128070;</a
+      >
+      <!-- Modal -->
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+
+          <div class="container">
+            <form class="row" id="form">
+              <div class="col-4 p-1">
+                <label for="form-label">
+                  Количество
+                <input type="number" min="1" placeholder="Количество" />
+              </label>
+              </div>
+              <div class="col-4 p-1">
+                <label for="form-label">
+                  Цвет<input type="color" /></label></div>
+              <div class="col-4 p-1">
+                <label for="form-label">   Комментарий     <input type="textarea" placeholder="Комментарий" /></label>
+        
+              </div>
+              <input type="button" value="Купить" onclick="sendForm()" >
+              </input>
+            </form>
+           
+        </div>
+      </div>
+    </div>
+    <div class="footer d-flex flex-row row" >
+           
+      <ul
+        class="header-list flex-row justify-content-end col-9"
+        id="menuListFooter"
+      ></ul>
+    </div>
+  </div>
+  </body>
+  <script defer>
+
+    let modal = document.getElementById("myModal");
+    let span = document.getElementsByClassName("close")[0];
+    const content = document.getElementById("categories");
+    const menuList = document.getElementById("menuList");
+    const menuListFooter = document.getElementById("menuListFooter");
+    let modalData = null;
+
+    const sendForm = (data) => {
+      let form = document.getElementById("form");
+      let amount =form?.elements[0].value
+      let color =form?.elements[1].value
+      let comment =form?.elements[2].value
+      if(amount<=0){
+        alert('количество должно быть больше 0')
+      }
+      alert(`ваш заказ принят ${amount},${color},${comment}`)
+    };
+
+    let toggleTheme = ()=>{
+      document.getElementById('main').classList.toggle('dark')
+    }
+
+    const log = (data) => {
+      modal.style.display = "block";
+      modalData = data;
+    };
+
+  
+   
+  </script>
+     <script src="./scripts/modal.js"></script>
+    <script src="./scripts/allContentData.js"></script>
+    <script src="./scripts/formatDate.js"></script>
+    <script src="./scripts/filContent.js"></script>
+  <script src="./scripts/menu.js"></script>
+
+</html>
